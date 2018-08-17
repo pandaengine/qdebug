@@ -1,0 +1,83 @@
+<?php use qdebug\utils\Table; ?>
+
+<div><b>Mysql慢查询</b></div>
+
+<div>
+
+<br/>
+
+慢查询日志文件: (slow_query_log_file)<br/>
+<a target="_blank" href="<?php echo U('','slowlog',['file'=>$slow_query_log_file]); ?>"><?php echo $slow_query_log_file;?></a>
+<br/>
+<br/>
+
+<h2>配置变量：</h2>
+
+<div>
+<?php foreach((array)$tests as $sql=>$result){ ?>
+	<br/>
+	<a target="_blank" href="<?php echo U('sql','',['sql'=>$sql]); ?>" class=""><?php echo $sql;?></a>
+	<br/><br/>
+	<?php echo Table::show((array)$result); ?>
+<?php } ?>
+</div>
+
+<div style="font-size:14px;color:#666;line-height:24px;">
+
+<hr/>
+
+- 在navicat中打开多个窗口：select sleep(10);<br/>
+- show status    系统状态<br/>
+- show variables 系统变量参数 <br/>
+- show status  当前会话的，退出失效<br/>
+- show global status 全局会话<br/>
+<hr/>
+
+log_output 		: log_output的值为“FILE”,证明是输出到日志文件，如果值为“TABLE”则将日志信息输出到默认“mysql”数据库中的相应日志表<br/>
+slow_query_log 	:是否开启慢查询日志<br/>
+slow_query_log_file：慢查询日志的名称和存储位置<br/>
+Slow_queries：出现慢查询次数的累计值<br/>
+long_query_time ：慢查询的阀值为4秒，超过4秒的查询都将记录到慢查询日志中<br/>
+log_queries_not_using_indexes ：将所有没有使用到索引的sql语句都记录到慢查询日志中<br/>
+<hr/>
+<?php 
+$sqls=
+[
+	['set global slow_query_log=on'		,'开启慢查询日志'],
+	['set long_query_time=1'			,'慢查询的阀值，执行时间超过1秒的都算慢查询'],
+	['set global long_query_time=0.1'	,'小于1s'],
+	['set global slow_query_log_file="c:\mysql_slow_query.log" '	,'慢查询日志的存储位置'],
+	['select sleep(10); '	,'模拟超时，休眠10s']
+];
+include __DIR__.'/common_sql.html';
+?>
+</div>
+
+</div>
+
+
+<script type="text/javascript">
+//#剔除span标签
+var b = /(<span.+?>)(.+?)(<\/span>)/g;
+var c = "g";
+if (true){
+    b = /(<span.+?>)(.+?)(<\/span>)/gi;
+    c = "gi"
+}
+
+var e='(Slow_queries|log_output|slow_query_log_file|slow_query_log|long_query_time|long_query_time)';
+var c = "gi";
+	
+$('table td').each(function(i,dom){
+	var d = $(dom).html().replace(new RegExp(b), "$2");
+	$(dom).html(d);
+	
+	var html=$(dom).html().replace(new RegExp(e,c), function(b){
+     	return ["<span style='background:yellow;color:red;'>",b,"</span>"].join("");
+    });
+	$(dom).html(html);
+});
+</script>
+
+
+	

@@ -1,0 +1,52 @@
+
+<form method="post">
+ 	<div class="form-group">
+			<button type="submit" class="btn btn-primary">执行</button>
+			<input type="button" class="btn btn-info" value="解释" onclick="explain();"/>&nbsp;
+			<a href="<?php echo U('sql','processes' ,['conn'=>$conn]); ?>" class="btn btn-default">进程</a>&nbsp;
+			<a href="<?php echo U('sql','slow'		,['conn'=>$conn]); ?>" class="btn btn-default">慢查询</a>
+			<a href="<?php echo U('sqlmulti','index',['conn'=>$conn]); ?>" class="btn btn-default">执行多条语句</a>
+			<span>当前连接: <?php echo $conn?$conn:'默认';?></span>
+	</div>
+	<div class="form-group">
+		<label for="J-sql" class="control-label">SQl语句</label>
+		<div class="">
+			<textarea class="form-control" name="sql" id="J-sql" rows="4" placeholder="请输入sql语句"><?php echo $sql;?></textarea>
+		</div>
+	</div>
+</form>
+
+<?php
+if($result || $error){
+	include __DIR__.'/index.result.html';
+}
+?>
+
+<?php 
+$sqls=
+[
+	['show databases  like "%qing%" '],
+	['show tables'			],
+	['SHOW CREATE TABLE pre_feeds'],
+	['SHOW COLUMNS FROM `pre_feeds` '],
+	["ALTER TABLE pre_feeds ADD `addtime`    int(10)  unsigned NOT NULL DEFAULT '0' COMMENT '创建时间' ",'新增列'],
+	["ALTER TABLE pre_feeds ADD  KEY `idx_sort` (`sort`) COMMENT 'sort索引' ",'新增索引'],
+	["SHOW FULL PROCESSLIST"],
+	["KILL 1"],
+	[''],
+	['set global slow_query_log=on'		,'开启慢查询日志'],
+	['set long_query_time=1'			,'慢查询的阀值，执行时间超过1秒的都算慢查询'],
+	['set global long_query_time=0.1'	,'小于1s'],
+	['set global slow_query_log_file="c:\mysql_slow_query.log" '	,'慢查询日志的存储位置'],
+	['select sleep(10); '	,'模拟超时，休眠10s'],
+	[''],
+	['show variables'],
+	['show variables like "%slow%"'],
+	['show variables like "%basedir%"'],
+	['show global status like "%slow%"'],
+	['show status like "%slow%"'],
+	[''],
+];
+include __DIR__.'/common_sql.html';
+?>
+

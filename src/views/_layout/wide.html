@@ -1,0 +1,33 @@
+<?php 
+$titles=
+[
+	'sql'	=>['SQL调试',U('sql')],
+	'php'	=>['代码调试',U('php')],
+	'index'	=>['应用调试',U('index')],
+];
+?>
+<!DOCTYPE html>
+<html>
+<?php include __DIR__.'/head.html';?>
+<body>
+<div class="container" id="maincontainer">
+	<header><a href="<?php echo url(MODULE_NAME);?>">QDebug</a></header>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<ul class="tabs-title nav nav-pills">
+			   <?php foreach((array)$titles as $k=>$v){ ?>
+			   	<li class="item <?php if($k==strtolower(CTRL_NAME)){ echo 'active'; }?>">
+			   		<a href="<?php echo $v[1];?>"><?php echo $v[0];?></a>
+			   	</li>
+			   <?php } ?>
+			</ul>
+		</div>
+		<div class="panel-body">
+			<?php echo @$main_content;?>
+			<?php echo $this->section('main');?>
+		</div>
+	</div>
+	<?php include __DIR__.'/footer.html';?>
+</div>
+</body>
+</html>

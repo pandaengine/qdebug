@@ -1,0 +1,26 @@
+a.qdebug{
+	display: block;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	line-height: 30px;
+    z-index: 999999;
+	
+	font-family: arial;
+	color: #BDCFFC;
+	background: #3469F1;
+	border-radius: 2px 0 0 0;
+	font-size: 18px;
+	padding-right: 5px;
+}
+a.qdebug:hover{
+	text-decoration: none;
+}
+a.qdebug>em,
+a.qdebug>i{
+	font-style: normal;
+}
+.qdebug>em{
+	border-right: 1px solid #668FF9;
+	padding: 0 6px;
+}

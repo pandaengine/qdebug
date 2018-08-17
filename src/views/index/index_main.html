@@ -1,0 +1,43 @@
+
+<div class="panel-heading">
+	<ul class="tabs-title nav nav-pills">
+	   <?php foreach((array)$titles as $k=>$v){ ?>
+	   	<li class="item <?php echo $k;?>"><a href="#<?php echo $k;?>"><?php echo $v;?></a></li>
+	   <?php } ?>
+	</ul>
+</div>
+<div class="panel-body">
+	<div class="tabs-content">
+	<?php
+	if($list){
+		include __DIR__.'/list.html';
+	}else{
+		echo '没有数据';
+	}
+	?>
+	</div>
+</div>
+<?php include __DIR__.'/popinfo.html';?>
+<?php include __DIR__.'/session.html';?>
+	
+<script type="text/javascript">
+$('.tabs-title li a').on('click',function(){
+	//tabs-content
+});
+//#监听hash的变化
+window.onhashchange=function(){
+	var hash = window.location.hash;
+	hash=hash.slice(1);
+	$('.tabs-content .item').hide();
+	$('.tabs-content .'+hash).show();
+
+	$('.tabs-title .item').removeClass('active');
+	$('.tabs-title .'+hash).addClass('active');
+};
+
+//#初始化
+if(window.location.hash==''){
+	window.location.hash='base';	
+}
+window.onhashchange();
+</script>

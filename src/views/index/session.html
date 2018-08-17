@@ -1,0 +1,20 @@
+
+<?php if($sessions){ ?>
+<div id="J-session" title="选择会话">
+      <select class="form-control" style="display:inline-block;width:auto;">
+      	<option value="<?php echo __A__;?>">最新会话</option>
+      	<?php foreach($sessions as $sess){ ?>
+         <option value="<?php echo U('','',['sessid'=>$sess[0] ]);?>" <?php if($sessid==$sess[0]){ ?> selected=true <?php } ?>><?php echo $sess[1];?></option>
+        <?php } ?>
+      </select>
+      <a href="<?php echo U('','clearSess');?>" style="color:#FB0000;" onclick="if(confirm('确认清空会话数据？')){return true;}else{return false;}">清空会话</a>
+</div>
+
+<script type="text/javascript">
+$('#J-session select').on('change',function(){
+	window.location.href=$(this).val()+window.location.hash;
+});
+</script>
+
+<?php } ?>
+

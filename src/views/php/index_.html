@@ -1,0 +1,46 @@
+
+<form method="post" class="" role="form">
+ 	<div class="form-group">
+		<button type="submit" class="btn btn-primary">执行</button>
+	</div>
+	<div class="form-group">
+		<label for="J-code" class="control-label">PHP代码</label>
+		<div class="">
+			<textarea class="form-control" name=code id="J-code" rows="4" placeholder="请输入php语句"><?php echo $code;?></textarea>
+		</div>
+	</div>
+</form>
+
+<?php
+if($result || $error){
+	include __DIR__.'/result.html';
+}
+?>
+
+<hr/>
+<?php 
+$codes=
+[
+	["echo date('Y-m-d H:i:s'); "],
+	["echo file_get_contents('http://www.baidu.com/img/bd_logo.png');"],
+	["echo htmlentities(file_get_contents('http://www.baidu.com'));"],
+	["phpinfo();"],
+	["dump(get_defined_constants(true)['user'])"],
+	["dump(get_defined_vars());"],
+	['dump($GLOBALS);'],
+	['dump(get_defined_functions()["user"]);'],
+	['debug_print_backtrace()'],
+	['echo date("Y-m-d H:i:s");'],
+	['echo uniqueId();'],
+	['echo uniqid();'],
+];
+?>
+<?php foreach($codes as $s){?>
+<a href="javascript:;" onclick="php_code(this);">执行：<span><?php echo $s[0];?></span></a> &nbsp;<?php echo $s[1];?><br/>
+<?php } ?>
+
+<script type="text/javascript">
+function php_code(dom){
+	$('textarea').val($(dom).find('>span').text());
+}
+</script>

@@ -1,0 +1,33 @@
+<?php use qdebug\utils\Table; ?>
+
+<div class="-processes">
+
+<h1><b>mysql连接/线程</b></h1>
+
+<span style="font-size:12px;color:#aaa;">参考 phpmyadmin->状态->进程</span>
+<br/>
+<br/>
+
+<?php
+echo Table::show((array)$list);
+?>
+
+<div style="color:#aaa;">
+	<br/>
+	测试:<br/>
+	- 在navicat中打开多个窗口：select sleep(10);<br/>
+	- 查看和终止死锁进程<br/>
+	<br/>
+</div>
+
+<?php 
+$sqls=
+[
+	["SHOW FULL PROCESSLIST"],
+	["KILL 1"],
+	["select * from information_schema.`PROCESSLIST`"]
+];
+include __DIR__.'/common_sql.html';
+?>
+
+</div>

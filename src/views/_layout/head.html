@@ -1,0 +1,22 @@
+
+<?php
+$title=$GLOBALS['qdebug_title'];
+if($title){
+	$title=$title.' | ';
+}
+?>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><?php echo $title;?>QDebug调试工具</title>
+
+<!-- jquery -->
+<script src="<?php echo U('statics','',['file'=>'libs/jquery.min.js']);?>" type="text/javascript"></script>
+<!-- bootstrap -->
+<link 	href="<?php echo U('statics','',['file'=>'libs/bootstrap.min.css']);?>" rel="stylesheet" />
+<script  src="<?php echo U('statics','',['file'=>'libs/bootstrap.min.js']);?>" type="text/javascript"></script>
+
+<link  href="<?php echo U('statics' ,'',['file'=>'css/main.css']);?>" rel="stylesheet"/>
+<script src="<?php echo U('statics','',['file'=>'js/main.js']);?>" type="text/javascript"></script>
+</head>

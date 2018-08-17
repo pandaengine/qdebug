@@ -1,0 +1,17 @@
+<?php use qdebug\utils\Table; ?>
+
+<div>
+<?php if($error){ ?>
+	<div class="alert alert-danger"><?php echo $error;?></div>
+<?php }else if($result){ ?>
+	<div></div>
+	<div class="alert alert-info">
+		执行结果：<?php echo count((array)$result['result']);?>行<br/>
+		执行时间：<?php echo $result['runtime']; ?> s<br/>
+		消耗内存：<?php echo $result['runmem']; ?><br/>
+	</div>
+<?php echo Table::show((array)$result['result']);?>	
+<?php }?>
+</div>
+
+<br/>

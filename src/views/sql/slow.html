@@ -1,0 +1,7 @@
+<?php 
+use qing\utils\Output;
+Output::capture_begin();
+include __DIR__.'/slow_.html';
+$main_content=Output::capture_end();
+include __DIR__.'/../_layout/wide.html';
+?>

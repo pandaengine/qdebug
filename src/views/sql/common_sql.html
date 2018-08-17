@@ -1,0 +1,3 @@
+<?php foreach($sqls as $s){ ?>
+	<a href="<?php echo U('sql','',['sql'=>$s[0] ]); ?>" class="">执行：<?php echo $s[0];?></a> &nbsp;<?php echo @$s[1];?><br/>
+<?php } ?>

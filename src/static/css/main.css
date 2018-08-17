@@ -1,0 +1,248 @@
+body {
+    font-size: 14px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+ul,li,ol{
+    list-style-type: none;
+}
+em {
+    font-style: normal;
+}
+img {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+a{
+text-decoration: none;
+}
+a:HOVER{text-decoration: underline;}
+input {
+  border: 0;
+}
+h1,h2,h3 {
+  font-weight: normal;
+  font-size: 100%;
+  padding:0;
+  margin:0;
+}
+.word,.word *{
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.btn.btn-primary{
+	  background-color: #2780E3;
+  border-color: #1872D5;
+}
+.btn.btn-primary:hover,.btn.btn-primary:active{
+	color: #FFF;
+  background-color: #176FD2;
+  border-color: #176FD2;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    color: #fff;
+    background-color: #2780E3;
+}
+
+header{
+	text-align: center;
+    font-size: 24px;
+    padding: 10px;
+	margin-top: 10px;
+    font-weight: bold;
+}
+footer{
+    font-weight: bold;
+    text-align: center;
+    color: #F30;
+    font-family: Consolas, monospace, 'Source Code Pro', Monaco, "Lucida Console";
+	padding-bottom: 20px;
+}
+footer .introduce{
+    color: #999;
+}
+.panel{
+	 position: relative;
+}
+#J-popinfo,
+#J-session{
+    position: absolute;
+    top: -42px;
+}
+#J-popinfo{
+    right: 20px;
+}
+#J-session{
+    left: 15px;
+}
+select.form-control,select option{
+    border-radius: 2px;
+}
+
+
+.tabs-title.nav>li>a{
+	padding: 6px 15px;
+}
+.tabs-content {
+	overflow: auto;
+	line-height: 24px;
+}
+.tabs-content .item{
+	display: none;
+    max-height: 400px;
+}
+.tabs-content .item:first-child{
+}
+
+.tabs-content ul li {
+	border-bottom: 1px solid #EEE;
+	font-size: 14px;
+	overflow: hidden;
+	list-style: none;
+	line-height: 32px;
+}
+
+.backtrace-item .method {
+    font-style: normal;
+	color:#4288CE;
+}
+.backtrace-item .func{
+	font-weight: bold;
+}
+.backtrace-item .args{
+	color:#FF812D;
+}
+
+.tabs-content .sql .query,.tabs-content .sql .query pre{
+    font-Weight: bold;
+	color: #2B77C3;
+	font-size: 14px;
+}
+.tabs-content .sql .query pre{
+    border-radius: 2px;
+}
+
+.tabs-content .sql .result-box{
+	margin: 10px 20px;
+    margin-left: 40px;
+	padding: 10px 20px;
+	border: 1px dashed #C0C0C0;
+	font-size: 12px;
+	background: #EEE;
+	overflow: auto;
+}
+
+table.tb-col2{
+	
+}
+table.tb-col2 td {
+	vertical-align: text-top;
+	padding: 0px 10px;
+	background-color: #FFF;
+	border: 1px solid #EEE;
+	
+	white-space: normal;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+table.tb-col2 td:first-child {
+    width: 20%;
+    min-width: 130px;
+    overflow: hidden;
+    font-weight: bold;
+    padding-right: 5px;
+}
+table.tb-col2 td:last-child {
+    width: 80%;
+    word-break: break-all;
+    word-break: break-word;
+    hyphens: auto;
+}
+
+.tabs-content .sql .result-box table {
+	border-collapse: collapse;
+	border: 1px solid #AAA;
+	font-size: 12px;
+	width: 99%;
+}
+
+.tabs-content .sql .result-box table th {
+	vertical-align: baseline;
+	padding: 0px 10px;
+	background-color: #D5D5D5;
+	border: 1px solid #AAA;
+	text-align: left;
+	
+	/*
+	white-space: nowrap;
+	word-wrap: break-word;
+	word-break: break-all;
+	*/
+}
+
+.tabs-content .sql .result-box table td {
+	vertical-align: text-top;
+	padding: 0px 10px;
+	background-color: #EFEFEF;
+	border: 1px solid #AAA;
+	
+	white-space: normal;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+
+.box-logs .query,.box-logs .query pre {
+    font-Weight: bold;
+    color: #2B77C3;
+    font-size: 14px;
+}
+
+table.tb01 td,table.tb01 th,.tb01 table td,.tb01 table th{
+    vertical-align: text-top;
+    padding: 0px 10px;
+    background-color: #EFEFEF;
+    border: 1px solid #AAA;
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.box-sql-multi{
+	
+}
+.box-sql-multi .item{
+    margin-bottom: 20px;
+}
+.box-sql-multi .item .info{
+    padding: 10px 0;
+	color: #337AB7;
+    font-weight: bold;
+}
+.box-sql-multi .item .result{
+	
+}
+.box-sql-multi .toolbar{
+    padding-bottom: 10px;	
+}
+.box-sql-multi .item .sql,.box-sql-multi .item .sql pre{
+    margin: 4px 0;
+    font-Weight: bold;
+    color: #2B77C3;
+    font-size: 14px;
+}
+.box-sql-multi .item .sql pre{
+    border-radius: 0;
+    border: none;
+    margin: 0;	
+}
+.box-sql-multi .alert{
+	border-radius:0px;
+    line-height: 24px;
+}
+

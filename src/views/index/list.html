@@ -1,0 +1,26 @@
+
+<?php foreach((array)$list as $key=>$rows) { ?>
+	<ul class="item <?php echo $key; ?>">
+		<?php 
+		if(is_array($rows)){
+		//#数组
+			foreach ($rows as $k=>$row){
+				//#遍历行
+				if($k==='_data'){ continue;}
+				if(is_int($k) && $k<=9){
+					$k='0'.$k;
+				}
+				if(is_array($row)){
+					$line="<li><pre>".var_export($row,true)."</pre></li>";
+				}else{
+					$line="<li><span class='key'>{$k} : </span><span class='value'>{$row}</span></li>";
+				}
+				echo $line;
+			}
+		}else{
+		//#字符串
+			echo (string)$rows;
+		}
+		?>
+	</ul>
+<?php } ?>

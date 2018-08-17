@@ -1,0 +1,30 @@
+<?php
+if($base){
+	//随便写的，不做参考^_^
+	$runtime=$base['runtime'];
+	//$runtime=1;
+	if($runtime<0.5){
+		$speedTitle='很快';
+		$speedClass='btn-success';
+	}elseif($runtime<1){
+		$speedTitle='一般';
+		$speedClass='btn-default';
+	}elseif($runtime<1.5){
+		$speedTitle='需要优化';
+		$speedClass='btn-info';
+	}elseif($runtime<2){
+		$speedTitle=' 慢  ';
+		$speedClass='btn-warning';
+	}else{
+		$speedTitle='不正常';
+		$speedClass='btn-danger';
+	}
+?>
+<div id="J-popinfo">
+	<div class="btn-group">
+	  <button type="button" title="执行时间" class="btn btn-default"><?php echo $base['runtime'];?> s</button>
+	  <button type="button" title="消耗内存" class="btn btn-default"><?php echo $base['runmem']?></button>
+	  <button type="button" title="运行速度，只作参考^_^" class="btn btn-default <?php echo $speedClass;?>"><?php echo $speedTitle;?></button>
+	</div>
+</div>
+<?php } ?>

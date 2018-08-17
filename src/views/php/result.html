@@ -1,0 +1,19 @@
+
+<div>
+<?php if($error){ ?>
+	<div class="alert alert-danger"><?php echo $error;?></div>
+<?php }else if($result){ ?>
+	<div></div>
+	<div class="alert alert-info">
+		执行时间：<?php echo $result['runtime'];?> s<br/>
+		消耗内存：<?php echo $result['runmem'];?><br/>
+	</div>
+	执行结果：<br/>
+	<div class="result-box">
+	<?php 
+// 	dump($result['result']);
+	echo $result['result'];
+	?>
+	</div>
+<?php } ?>
+</div>

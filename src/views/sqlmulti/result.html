@@ -1,0 +1,91 @@
+<?php 
+use qdebug\utils\Table;
+?>
+<script type="text/javascript">
+window.W_hide=false;
+window.W_res_hide=false;
+//
+function toggle_all(){
+	$('.item .hide-box').each(function(k,v){
+		if(W_hide){ 
+			$(v).show();
+		}else{
+			$(v).hide();
+		} 
+	});
+	if(W_hide){
+		W_hide=false;
+	}else{
+		W_hide=true;
+	}
+}
+function toggle_result(){
+	$('.item .result').each(function(k,v){
+		if(W_res_hide){ 
+			$(v).show();
+		}else{
+			$(v).hide();
+		} 
+	});
+	if(W_res_hide){
+		W_res_hide=false;
+	}else{
+		W_res_hide=true;
+	}
+}
+</script>
+
+<div class="alert alert-info" style="">
+	执行SQL语句：<?php echo count((array)$result['rows']); ?> 条<br/>
+	执行时间：<?php echo $result['runtime']; ?> s<br/>
+	消耗内存：<?php echo $result['runmem']; ?><br/>
+</div>
+<hr/>
+
+<div>
+	<a href="javascript:;" onclick="toggle_all();">隐藏所有</a>
+	<a href="javascript:;" onclick="toggle_result();">隐藏所有结果</a><br/>
+</div>
+<br/>
+
+<?php
+foreach((array)$result['rows'] as $k=>$row){
+	$k =$k+1;
+	$id='J-item-'.$k;
+?>
+<div class="item" id="<?php echo $id;?>">
+	<div class="toolbar" id="item-<?php echo $k;?>">
+		<a href="#item-<?php echo $k;?>">#<?php echo $k;?></a>
+		<a href="javascript:;" onclick="$('#<?php echo $id;?> .hide-box').toggle();">隐藏</a>
+		<a href="javascript:;" onclick="$('#<?php echo $id;?> .result').toggle();">隐藏结果</a>
+	</div>
+	<?php $result=(array)$row['result']; ?>
+	<div class="sql">
+		<?php
+		$sql=(string)$row['sql'];
+		$sql=trim($sql);
+		if(strpos($sql,"\r")!==false){
+			//#多行的时候
+			echo "<pre>{$sql}</pre>";
+		}else{
+			echo $sql;
+		}
+		?>
+	</div>
+	<div class="hide-box">
+		<div class="info">
+			执行时间：<?php echo $result['runtime'];?> s&nbsp;&nbsp;
+			消耗内存：<?php echo $result['runmem']; ?>&nbsp;&nbsp;
+			结果集：<?php echo count((array)$result['result']);?>行
+		</div>
+		<?php if(!$row['success']){ ?>
+			<div class="alert alert-danger"><?php echo $row['error'];?></div>
+		<?php }else{ ?>
+			<div class="result">
+			<?php echo Table::show((array)$result['result']); ?>
+			</div>
+		<?php } ?>
+	</div>
+	<hr/>
+</div>
+<?php } ?>

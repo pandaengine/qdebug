@@ -1,0 +1,10 @@
+
+<style type="text/css">
+	<?php echo @file_get_contents(__DIR__.'/logo.css');?>
+</style>
+<a target="_blank" href="<?php echo url('qdebug','index');?>" 
+	class="qdebug" title="<?php echo (float)$runtime.' s | '.$runmem;?> | 点击跳转到 QDebug">
+	<em>Q</em>
+	<i><?php echo (float)$runtime.' s';?></i>
+</a>
+
